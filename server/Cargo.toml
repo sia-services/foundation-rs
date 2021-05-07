@@ -1,0 +1,40 @@
+[package]
+name = "server"
+version = "0.1.0"
+authors = ["Dmitri Astafiev <demius.md@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+r2d2 = "0.8"
+r2d2-oracle = { version = "0.5", features = ["chrono"] }
+oracle = { version = "0.5", features = ["chrono"] }
+
+chrono = { version = "0.4", features = ["serde"] }
+config = "0.11"
+itertools = "0.10"
+lazy_static = "1.4"
+
+actix-web = { version = "3", features = ["openssl"] }
+actix-slog = "0.2"
+openssl = { version = "0.10" }
+jsonwebtoken = "7.2"
+
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.8"
+serde_json = "1.0"
+
+slog = "2.5"
+slog-async = "2.5"
+slog-term = "2.6"
+
+oracle_derive = { version = "0.1.0", path = "../oracle_derive" }
+maplit = { version = "0.1.0", path = "../maplit" }
+
+# export APP_CONNECTION_CREDENTIALS_USER=SYSTEM
+# export APP_CONNECTION_CREDENTIALS_PW=REAL_SYSTEM_PW
+
+## setup libssl-dev, pkg-config
+
+## build for release: cargo build --release
+## for full minification (strip debug symbols):
+## strip target/release/server

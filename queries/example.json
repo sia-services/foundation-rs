@@ -1,0 +1,49 @@
+{
+    "params": [
+        {
+            "name": "mask",
+            "value": "abracadabra"
+        },
+        {
+            "name": "luna",
+            "value": 202101
+        }
+    ],
+    "queries": [
+        {
+            "name": "q1",
+            "from": {
+                "schema": "CLIENTI",
+                "entity": "PARTENERS",
+                "synonym": "P"
+            },
+            "joins": [
+                {
+                    "schema": "CLIENTI",
+                    "entity": "CONSUMATORI",
+                    "synonym": "C",
+                    "on": [
+                        {
+                            "main-synonym": "P",
+                            "main-field": "ID",
+                            "join-field": "PARTENER_ID"
+                        }
+                    ]
+                }
+            ],
+            "where": [
+
+            ],
+            "select": [
+                {
+                    "synonym": "C",
+                    "field": "ID"
+                }
+            ]
+        },
+        {
+            "name": "q2"
+        }
+    ],
+    "return": "q2"
+}

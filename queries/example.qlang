@@ -1,0 +1,14 @@
+request (mask: string, luna: int) {
+    let q1 = from CLIENTI.PARTENERS as P
+             join CLIENTI.CONSUMATORI as C on C.PARTENER_ID = P.ID
+            where P.NUME like '%' || :mask || '%'
+           select C.ID;
+
+    let q2 = from CALCULARI.CALCULARI_ACC as C
+            where C.CONSUMATOR_ID in :q1
+              and c.LUNA_CALC = :luna
+           select C.CONSUMATOR_ID, C.VOLUM, C.CALCULAT
+            order by C.CONSUMATOR_ID;
+            
+    q2
+}

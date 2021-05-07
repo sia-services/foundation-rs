@@ -1,0 +1,7 @@
+[package]
+name = "maplit"
+version = "0.1.0"
+authors = ["bluss"]
+description = "Collection “literal” macros for HashMap, HashSet, BTreeMap, and BTreeSet."
+keywords = ["literal", "data-structure", "hashmap", "macro"]
+edition = "2018"

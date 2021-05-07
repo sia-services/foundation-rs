@@ -1,0 +1,24 @@
+[workspace]
+
+members = [
+    "oracle_derive",
+    "server",
+    "maplit"
+]
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+lto = true        # Enable link Time Optimization
+## strip = "symbols"
+debug = false
+panic = 'abort'   # Abort on panic
+codegen-units = 2 # Parallel Codegeneration (default: 16)
+
+## need install libssl-dev
+
+## build for release: cargo build --release
+## for full minification (strip debug symbols):
+## strip target/release/server
