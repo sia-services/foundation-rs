@@ -2,11 +2,6 @@
 url = "oracle-linux.apa-canal.md:1521/ACC"
 credentials = { user = "FOUNDATION", pw = "FOUNDATION_PASSWORD"}
 
-[http]
-listen = { domain = "127.0.0.1", port = 8444 }
-tls-key = "keyring/internal-devel.key"
-tls-cert = "keyring/internal-devel.crt"
-
 [jwt]
 public-key = "keyring/jwt-public-key.pem"
 issuer = "https://sia.acc.md/using-jwt-rbac"

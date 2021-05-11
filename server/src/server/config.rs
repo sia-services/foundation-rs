@@ -1,6 +1,7 @@
+use std::env;
+use std::path::Path;
 use config::{Config, ConfigError};
 use serde::Deserialize;
-use std::path::Path;
 
 // https://serde.rs/derive.html
 // https://github.com/mehcode/config-rs/blob/master/examples/hierarchical-env/config/default.toml
@@ -53,12 +54,19 @@ pub struct OthersConfig {
 }
 
 pub fn load_config() -> Result<ServerConfig, ConfigError> {
-    let path = Path::new("config").join("config.toml");
+    // Add in the current environment file
+    // Default to 'development' env
+    // Note that this file is _optional_
+    let env = env::var("RUN_MODE").unwrap_or_else(|_| "development".into());
+
+    let root = Path::new("config");
+    let default_path = root.join("default.toml");
+    let current_path = root.join(format!("{}.toml", env));
 
     let mut config = Config::default();
     config
-        // Add in `./config.toml`
-        .merge(config::File::from(path)).unwrap()
+        .merge(config::File::from(default_path)).unwrap()
+        .merge(config::File::from(current_path)).unwrap()
         // Add in settings from the environment (with a prefix of APP)
         // Eg.. `APP_DEBUG=1 ./target/app` would set the `debug` key
         .merge(config::Environment::with_prefix("APP").separator("_")).unwrap();

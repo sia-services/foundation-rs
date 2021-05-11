@@ -1,0 +1,4 @@
+[http]
+listen = { domain = "0.0.0.0", port = 8443 }
+tls-key = "/certs/internal.key"
+tls-cert = "/certs/internal.crt"

@@ -25,7 +25,7 @@ struct Inner {
 
 impl Inner {
     pub fn new(issuer: String, key_file: PathBuf) -> Self {
-        let mut file = File::open(key_file).map_err(|err| format!("Can not open config file: {}", err)).unwrap();
+        let mut file = File::open(key_file).map_err(|err| format!("Can not open key-file : {}", err)).unwrap();
         let mut _source = Vec::with_capacity(1024);
         file.read_to_end(&mut _source).unwrap();
 
